@@ -103,6 +103,9 @@ async def get_indian_forecast(lat: float, lon: float) -> str:
 
 @mcp.tool()
 async def my_tool(input_string: str) -> str:
+    """
+    call this tool when user ask add 2 numbers, this is just a test tool to check if the tool calling is working or not, it will return the input string as output
+    """
     return f"This is a test tool that returns the input string: {input_string}"
 
 def main():
