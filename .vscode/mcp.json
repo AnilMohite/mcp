@@ -1,0 +1,13 @@
+{
+    "servers": {
+        "weather": {
+            "command": "uv",
+            "args": [
+                "--directory",
+                "D:\\Anil Study\\Python Std\\mcp-servers\\mcp\\weather",
+                "run",
+                "weather.py"
+            ]
+        }
+    }
+}
