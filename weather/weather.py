@@ -40,10 +40,10 @@ def format_alert(feature: dict) -> str:
 
 @mcp.tool()
 async def get_weather_alerts(state: str) -> str:
-    """Get weather alerts for a Indian state.
+    """Get weather alerts for a US state.
 
     Args:
-        state: Two letter state code (e.g., 'MH' for maharashtra)
+        state: Two letter state code (e.g. 'CA' for California)
     """
     url = f"{API_BASE_URL}/alerts/active/area/{state}"
     data = await make_nws_request(url)
@@ -93,6 +93,17 @@ async def get_forecast(lat: float, lon: float) -> str:
 
     return "\n---\n".join(forecasts)
 
+@mcp.tool()
+async def get_indian_forecast(lat: float, lon: float) -> str:
+    url = f"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&hourly=temperature_2m"
+    async with httpx.AsyncClient() as client:
+        resp = await client.get(url)
+        data = resp.json()
+    return str(data)
+
+@mcp.tool()
+async def my_tool(input_string: str) -> str:
+    return f"This is a test tool that returns the input string: {input_string}"
 
 def main():
     # Initialize and run the server
